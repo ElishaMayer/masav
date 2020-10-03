@@ -1,6 +1,6 @@
 {
   "name": "masav",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Generate Masav Payment File",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
