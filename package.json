@@ -15,7 +15,8 @@
   "scripts": {
     "test": "jest --config jestconfig.json",
     "build": "tsc",
-    "version": "git add -A src"
+    "version": "git add -A src",
+    "publish":"npm version patch; npm publish"
   },
   "files": [
     "lib/**/*"
