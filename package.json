@@ -1,7 +1,7 @@
 {
   "name": "masav",
   "version": "1.0.0",
-  "description": "",
+  "description": "Generate Masav Payment File",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "dependencies": {},
@@ -19,7 +19,15 @@
   "files": [
     "lib/**/*"
   ],
-  "keywords": [],
-  "author": "",
-  "license": "ISC"
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ElishaMayer/masav.git"
+  },
+  "keywords": ["masav","מסב","מס\"ב"],
+  "author": "Elisha Mayer",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ElishaMayer/masav/issues"
+  },
+  "homepage": "https://github.com/ElishaMayer/masav#readme"
 }
