@@ -26,6 +26,16 @@ let institution = new InstitutionSendPayment(
   "001"
 );
 ```
+The constructor of ```InstitutionSendPayment``` get the following arguments:
+| Argument Name  | Description | Format     |
+| ------------- | ------------- | ----------|
+| institutionId  | The institution Id ( Given by Masav )  | String, Numbers only, Max length 8 digits|
+| sendingInstitutionId  | The sending institution Id ( Given by Masav )  | String, Numbers only, Max length 5 digits|
+| createDate  | The creation date of the record  | String, Date in the following format YYMMDD |
+| paymentDate  | The payment date  | String, Date in the following foramt YYMMDD |
+| institutionName  | The institution name  | String, Max length 30 characters|
+| serialNumber  | Serial number of the record  | String, Numbers only, Max length 3 digits|
+
 Then add the transactions to the institution
 ```javascript
 institution.addPaymentRecords([
@@ -49,6 +59,18 @@ institution.addPaymentRecords([
   ),
 ]);
 ```
+The constructor of ```SendPaymentsRecord``` get the following arguments:
+| Argument Name  | Description | Format     |
+| ------------- | ------------- | ----------|
+| bankId  | The bank Id number  | String, Numbers only, Max length 2 digits|
+| branchId  | The bank branch Id  | String, Numbers only, Max length 3 digits|
+| accountId  | The bank account number  | String, Numbers only, Max length 9 digits|
+| payeeId  | Payee id ( תעודת זהות )  | String, Numbers only, Max length 9 digits|
+| payeeName  | Payee name  | String, Max length 16 characters|
+| payeeNumber  | Payee number  | String, Max length 20 characters|
+| amount  | Amount to pay  | Number, Bigger than 0, Up to 2 digits after decimal|
+| paymentPeriod  | Payment period  | TimeSpan ( gets start and end date as string YYMM ) not required |
+
 Add the institution to the file
 ```javascript
 masavFile.addInstitution(institution);
