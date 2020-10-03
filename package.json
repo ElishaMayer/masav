@@ -1,6 +1,6 @@
 {
   "name": "masav",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Generate Masav Payment File",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
@@ -15,7 +15,7 @@
   "scripts": {
     "test": "jest --config jestconfig.json",
     "build": "tsc",
-    "version" : "git add -A src"
+    "version": "git add -A src"
   },
   "files": [
     "lib/**/*"
@@ -24,7 +24,11 @@
     "type": "git",
     "url": "git+https://github.com/ElishaMayer/masav.git"
   },
-  "keywords": ["masav","מסב","מס\"ב"],
+  "keywords": [
+    "masav",
+    "מסב",
+    "מס\"ב"
+  ],
   "author": "Elisha Mayer",
   "license": "ISC",
   "bugs": {
