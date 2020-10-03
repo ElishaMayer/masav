@@ -27,9 +27,6 @@ export default class Tools {
       for (let index = 0; index < str.length; index++) {
         arr.push(str[index]);
       }
-      if (reverse) {
-        arr = arr.reverse();
-      }
       if (arr.length < length && type === "N") {
         let offset = length - arr.length;
         for (let index = 0; index < offset; index++) {
@@ -41,6 +38,9 @@ export default class Tools {
         for (let index = 0; index < offset; index++) {
           arr.unshift(" ");
         }
+      }
+      if (reverse) {
+        arr = arr.reverse();
       }
       let buffer: Buffer = Buffer.alloc(length);
       for (let index = 0; index < length; index++) {

@@ -62,7 +62,7 @@ export default class SendPaymentsRecord {
         2,
         "N"
       ),
-      Tools.stringToBuffer(this._payeeNumber, 20, "X"),
+      Tools.stringToBuffer(this._payeeNumber, 20, "N"),
       this._paymentPeriod.getBuffer(),
       Tools.stringToBuffer("", 3, "N"),
       Tools.stringToBuffer("006", 3, "N"),
