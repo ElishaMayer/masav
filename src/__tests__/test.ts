@@ -42,6 +42,14 @@ test('Tools.stringToBuffer("123", 2, "X")', () => {
   );
 });
 
+test('Tools.getASCIIValue("א")', () => {
+  expect(Tools.getASCIIValue("א")).toStrictEqual(128);
+});
+
+test('Tools.getASCIIValue("ת")', () => {
+  expect(Tools.getASCIIValue("ת")).toStrictEqual(154);
+});
+
 test("Test the full file", () => {
   expect(
     (() => {
