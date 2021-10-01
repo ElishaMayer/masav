@@ -43,11 +43,11 @@ test('Tools.stringToBuffer("123", 2, "X")', () => {
 });
 
 test('Tools.getASCIIValue("א")', () => {
-  expect(Tools.getASCIIValue("א")).toStrictEqual(128);
+  expect(Tools.getASCIIValue("א")).toStrictEqual(38);
 });
 
 test('Tools.getASCIIValue("ת")', () => {
-  expect(Tools.getASCIIValue("ת")).toStrictEqual(154);
+  expect(Tools.getASCIIValue("ת")).toStrictEqual(90);
 });
 
 test("Test the full file", () => {
@@ -83,7 +83,6 @@ test("Test the full file", () => {
         ),
       ]);
       masavFile.addInstitution(institution);
-
       return masavFile.toBuffer();
     })()
   ).toEqual(
