@@ -1,6 +1,8 @@
 # Masav
-A JavaScript library for building "Masav" files - Israeli sending payments file.
->Warning! This library is new and is not supported by "Masav"
+A JavaScript library for building "Masav" files - Israeli sending payments file [Masav](https://www.masav.co.il/).
+The package can build only "payment" files as described in the following [file](https://www.masav.co.il/media/1987/mifrat_zikuim_msv.pdf).
+For implementing other Masav files, please contact me at [elisha.mayer.il@gmail.com](mailto:elisha.mayer.il@gmail.com).
+>Warning! This npm package not supported by "Masav"
 
 >To get the files accepted properly by "Masav", it is important to update to version 1.0.10
 ## Installation
