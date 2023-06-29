@@ -12,7 +12,7 @@ export default class InstitutionSendPayment {
 
   /**
    * Create a sending payments record
-   * @param {string} institutionId The institution Id ( Given by Mavas )
+   * @param {string} institutionId The institution Id ( Given by Masav )
    * @param {string} sendingInstitutionId The sending institution Id ( Given by Masav )
    * @param {string} createDate The creation date of the record ( YYMMDD )
    * @param {string} paymentDate The payment date ( YYMMDD )
@@ -25,7 +25,7 @@ export default class InstitutionSendPayment {
     createDate: string,
     paymentDate: string,
     institutionName: string,
-    serialNumber: string
+    serialNumber: string,
   ) {
     if (institutionId.length > 8)
       throw new Error(
@@ -66,7 +66,7 @@ export default class InstitutionSendPayment {
   }
 
   /**
-   * Add send paymnt record
+   * Add send payment record
    * @param {SendPaymentsRecord[]} records Payment record list
    */
   addPaymentRecords(records: SendPaymentsRecord[]) {
@@ -74,7 +74,7 @@ export default class InstitutionSendPayment {
   }
 
   /**
-   * Add send paymnt record
+   * Add send payment record
    * @param {SendPaymentsRecord} record Payment record
    */
   addPaymentRecord(record: SendPaymentsRecord) {

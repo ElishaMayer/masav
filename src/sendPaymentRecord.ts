@@ -73,7 +73,7 @@ export default class SendPaymentsRecord {
   }
 
   toString() {
-    return `SendPaymentsRecord Payee Name=${this._payeeName} Amuont=${this._amount}`;
+    return `SendPaymentsRecord Payee Name=${this._payeeName} Amount=${this._amount}`;
   }
 }
 
