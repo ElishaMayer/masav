@@ -1,6 +1,6 @@
 import Tools from "./tools";
 
-export default class SendPaymentsRecord {
+export default class GetPaymentsRecord {
   _bankDetails: BankAccount;
   _payeeId: string;
   _payeeName: string;
@@ -65,7 +65,7 @@ export default class SendPaymentsRecord {
       Tools.stringToBuffer(this._payeeNumber, 20, "N"),
       this._paymentPeriod.getBuffer(),
       Tools.stringToBuffer("", 3, "N"),
-      Tools.stringToBuffer("006", 3, "N"),
+      Tools.stringToBuffer("504", 3, "N"),
       Tools.stringToBuffer("", 18, "N"),
       Tools.stringToBuffer("  ", 2, "X"),
       Tools.getEndOfRecordBuffer(),
@@ -73,7 +73,7 @@ export default class SendPaymentsRecord {
   }
 
   toString() {
-    return `SendPaymentsRecord Payee Name=${this._payeeName} Amount=${this._amount}`;
+    return `GetPaymentsRecord Payee Name=${this._payeeName} Amount=${this._amount}`;
   }
 }
 

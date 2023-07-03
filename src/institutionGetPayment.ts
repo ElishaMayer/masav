@@ -1,17 +1,17 @@
-import SendPaymentsRecord from "./sendPaymentRecord";
+import GetPaymentsRecord from "./getPaymentRecord";
 import Tools from "./tools";
 
-export default class InstitutionSendPayment {
+export default class InstitutionGetPayment {
   _institutionId: string;
   _sendingInstitutionId: string;
   _createDate: string;
   _paymentDate: string;
   _institutionName: string;
   _serialNumber: string;
-  _payments: SendPaymentsRecord[];
+  _payments: GetPaymentsRecord[];
 
   /**
-   * Create a sending payments record
+   * Create a receiving payments record
    * @param {string} institutionId The institution Id ( Given by Masav )
    * @param {string} sendingInstitutionId The sending institution Id ( Given by Masav )
    * @param {string} createDate The creation date of the record ( YYMMDD )
@@ -62,27 +62,27 @@ export default class InstitutionSendPayment {
   }
 
   toString() {
-    return `MasavSendPayment Institution Id=${this._institutionId} Payments.length=${this._payments.length}`;
+    return `MasavGetPayment Institution Id=${this._institutionId} Payments.length=${this._payments.length}`;
   }
 
   /**
-   * Add send payment record
-   * @param {SendPaymentsRecord[]} records Payment record list
+   * Add get payment record
+   * @param {GetPaymentsRecord[]} records Payment record list
    */
-  addPaymentRecords(records: SendPaymentsRecord[]) {
+  addPaymentRecords(records: GetPaymentsRecord[]) {
     this._payments = [...this._payments, ...records];
   }
 
   /**
-   * Add send payment record
-   * @param {SendPaymentsRecord} record Payment record
+   * Add get payment record
+   * @param {GetPaymentsRecord} record Payment record
    */
-  addPaymentRecord(record: SendPaymentsRecord) {
+  addPaymentRecord(record: GetPaymentsRecord) {
     this._payments = [...this._payments, record];
   }
 
   /**
-   * Get institution send payments buffer
+   * Get institution get payments buffer
    */
   getBuffer() {
     if (this._payments.length === 0)
@@ -112,7 +112,8 @@ export default class InstitutionSendPayment {
     let sumAmount: number = this._payments
       .map((payment) => payment._amount)
       .reduce((a, b) => a + b, 0);
-
+    
+    // Same as send payment but lines 7 & 8, and 9 & 10 are switched
     let sum = Buffer.concat([
       Tools.stringToBuffer("5", 1, "X"),
       Tools.stringToBuffer(this._institutionId, 8, "N"),
@@ -120,11 +121,11 @@ export default class InstitutionSendPayment {
       Tools.stringToBuffer(this._paymentDate, 6, "N"),
       Tools.stringToBuffer("", 1, "N"),
       Tools.stringToBuffer(this._serialNumber, 3, "N"),
+      Tools.stringToBuffer("", 15, "N"),
       Tools.stringToBuffer(String(Math.floor(sumAmount)), 13, "N"),
       Tools.stringToBuffer(String(Math.round(sumAmount * 100) % 100), 2, "N"),
-      Tools.stringToBuffer("", 15, "N"),
-      Tools.stringToBuffer(String(this._payments.length), 7, "N"),
       Tools.stringToBuffer("", 7, "N"),
+      Tools.stringToBuffer(String(this._payments.length), 7, "N"),
       Tools.stringToBuffer("", 63, "X"),
       Tools.getEndOfRecordBuffer(),
     ]);

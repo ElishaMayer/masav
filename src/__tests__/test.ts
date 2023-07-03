@@ -1,10 +1,12 @@
 import { readFileSync } from "fs";
 import {
-  MasaVSendPayments,
-  InstitutionSendPayment,
-  SendPaymentsRecord,
-  Tools,
+    MasaVSendPayments,
+    InstitutionSendPayment,
+    SendPaymentsRecord,
+    Tools, MasaVGetPayments,
 } from "../index";
+import InstitutionGetPayment from "../institutionGetPayment";
+import GetPaymentsRecord from "../getPaymentRecord";
 
 test('Tools.stringToBuffer("123", 6, "N")', () => {
   expect(Tools.stringToBuffer("123", 6, "N")).toStrictEqual(
@@ -50,7 +52,7 @@ test('Tools.getASCIIValue("ת")', () => {
   expect(Tools.getASCIIValue("ת")).toStrictEqual(90);
 });
 
-test("Test the full file", () => {
+test("Test the full send file", () => {
   expect(
     (() => {
       let masavFile = new MasaVSendPayments();
@@ -87,7 +89,50 @@ test("Test the full file", () => {
     })()
   ).toEqual(
     (() => {
-      let file: Buffer = readFileSync("example.bin");
+      let file: Buffer = readFileSync("send_example.bin");
+      return file;
+    })()
+  );
+});
+
+test("Test the full get file", () => {
+  expect(
+    (() => {
+      let masavFile = new MasaVGetPayments();
+      let institution = new InstitutionGetPayment(
+        "12345678",
+        "12345",
+        "200507",
+        "200507",
+        "Company ISRAEL LTD.",
+        "404"
+      );
+      institution.addPaymentRecords([
+        new GetPaymentsRecord(
+          "11",
+          "303",
+          "007008629",
+          "123123127",
+          "Leto II Atreides",
+          "00000000000001313131",
+          85
+        ),
+        new GetPaymentsRecord(
+          "31",
+          "051",
+          "000283487",
+          "123456782",
+          "Thorin Oakenshield",
+          "00000000000001122233",
+          1346.37
+        ),
+      ]);
+      masavFile.addInstitution(institution);
+      return masavFile.toBuffer();
+    })()
+  ).toEqual(
+    (() => {
+      let file: Buffer = readFileSync("get_example.bin");
       return file;
     })()
   );
