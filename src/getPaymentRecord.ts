@@ -83,7 +83,7 @@ export class BankAccount {
   _accountId: string;
 
   /**
-   * Israely bank account
+   * Israeli bank account
    * @param {string} bankId Bank Id ( for example '01' )
    * @param {string} branchId Branch Id ( for example '123' )
    * @param {string} accountId Account number ( for example '123456' )

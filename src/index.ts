@@ -8,21 +8,21 @@ import SendPaymentsRecord from "./sendPaymentRecord";
 import GetPaymentsRecord from "./getPaymentRecord";
 
 class MasaVSendPayments {
-  _intitutions: InstitutionSendPayment[] = [];
+  _institutions: InstitutionSendPayment[] = [];
 
-  addInstitution(intitution: InstitutionSendPayment) {
-    this._intitutions = [...this._intitutions, intitution];
+  addInstitution(institution: InstitutionSendPayment) {
+    this._institutions = [...this._institutions, institution];
   }
 
-  addInstitutions(intitutions: InstitutionSendPayment[]) {
-    this._intitutions = [...this._intitutions, ...intitutions];
+  addInstitutions(institutions: InstitutionSendPayment[]) {
+    this._institutions = [...this._institutions, ...institutions];
   }
 
   toBuffer() {
-    if (this._intitutions.length === 0)
+    if (this._institutions.length === 0)
       throw new Error("There are no institutions");
     let buffer: Buffer = Buffer.concat([
-      ...this._intitutions.map((institution) => institution.getBuffer()),
+      ...this._institutions.map((institution) => institution.getBuffer()),
       Tools.getEndOfFileRecord(),
     ]);
     return buffer;
@@ -34,21 +34,21 @@ class MasaVSendPayments {
 }
 
 class MasaVGetPayments {
-  _intitutions: InstitutionGetPayment[] = [];
+  _institutions: InstitutionGetPayment[] = [];
 
-  addInstitution(intitution: InstitutionGetPayment) {
-    this._intitutions = [...this._intitutions, intitution];
+  addInstitution(institution: InstitutionGetPayment) {
+    this._institutions = [...this._institutions, institution];
   }
 
-  addInstitutions(intitutions: InstitutionGetPayment[]) {
-    this._intitutions = [...this._intitutions, ...intitutions];
+  addInstitutions(institutions: InstitutionGetPayment[]) {
+    this._institutions = [...this._institutions, ...institutions];
   }
 
   toBuffer() {
-    if (this._intitutions.length === 0)
+    if (this._institutions.length === 0)
       throw new Error("There are no institutions");
     let buffer: Buffer = Buffer.concat([
-      ...this._intitutions.map((institution) => institution.getBuffer()),
+      ...this._institutions.map((institution) => institution.getBuffer()),
       Tools.getEndOfFileRecord(),
     ]);
     return buffer;
