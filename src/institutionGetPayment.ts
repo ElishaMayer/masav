@@ -16,7 +16,7 @@ export default class InstitutionGetPayment {
    * @param {string} sendingInstitutionId The sending institution Id ( Given by Masav )
    * @param {string} createDate The creation date of the record ( YYMMDD )
    * @param {string} paymentDate The payment date ( YYMMDD )
-   * @param {string} institutionName The intitution name
+   * @param {string} institutionName The institution name
    * @param {string} serialNumber Serial number of the record
    */
   constructor(
